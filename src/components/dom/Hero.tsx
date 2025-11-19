@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 
+import TextScramble from "@/components/dom/TextScramble";
+
 export default function Hero() {
     return (
         <section className="h-screen w-full flex flex-col justify-center px-4 md:px-12 pointer-events-none">
@@ -12,9 +14,9 @@ export default function Hero() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
                     <h1 className="text-[12vw] leading-[0.85] font-bold tracking-tighter text-white">
-                        ADIL
+                        <TextScramble text="ADIL" />
                         <br />
-                        ZABEN
+                        <TextScramble text="ZABEN" />
                     </h1>
                 </motion.div>
 

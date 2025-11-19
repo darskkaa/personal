@@ -1,51 +1,64 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { useState } from "react";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { Project } from "@/data/projects";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 export default function ProjectCard({ project }: { project: Project }) {
-    const [isHovered, setIsHovered] = useState(false);
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+        const { left, top } = currentTarget.getBoundingClientRect();
+        mouseX.set(clientX - left);
+        mouseY.set(clientY - top);
+    }
 
     return (
-        <Link href={`/work/${project.id}`} className="block group">
+        <Link href={`/work/${project.id}`}>
             <motion.div
-                layoutId={`card-container-${project.id}`}
-                className="relative w-full aspect-[4/3] bg-white/5 border border-white/10 overflow-hidden rounded-lg"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+                className="group relative w-full aspect-[4/3] bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-colors"
+                onMouseMove={handleMouseMove}
+                whileHover={{ scale: 0.98 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                layoutId={`project-${project.id}`}
             >
-                {/* Placeholder for Project Image/Visual */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+                <motion.div
+                    className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100"
+                    style={{
+                        background: useMotionTemplate`
+                            radial-gradient(
+                                650px circle at ${mouseX}px ${mouseY}px,
+                                rgba(255, 255, 255, 0.15),
+                                transparent 80%
+                            )
+                        `,
+                    }}
+                />
 
-                {/* Content Overlay */}
-                <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
                     <div className="flex justify-between items-start">
-                        <span className="text-xs font-mono text-accent-blue tracking-wider">{project.year}</span>
-                        <span className="text-xs font-mono text-white/50 tracking-wider uppercase">{project.category}</span>
+                        <span className="text-xs font-mono text-gray-400 uppercase tracking-widest border border-white/10 px-2 py-1 rounded-full bg-black/20 backdrop-blur-md">
+                            {project.category}
+                        </span>
+                        <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <ArrowUpRight className="w-4 h-4 text-white" />
+                        </div>
                     </div>
 
                     <div>
-                        <motion.h3
-                            layoutId={`title-${project.id}`}
-                            className="text-3xl font-bold text-white mb-2 tracking-tight group-hover:text-accent-green transition-colors"
-                        >
+                        <h3 className="text-3xl font-bold text-white mb-2 group-hover:text-accent-blue transition-colors">
                             {project.title}
-                        </motion.h3>
-                        <p className="text-sm text-gray-400 line-clamp-2 group-hover:text-white transition-colors">
+                        </h3>
+                        <p className="text-gray-400 text-sm line-clamp-2">
                             {project.description}
                         </p>
                     </div>
                 </div>
 
-                {/* Hover Effect Overlay */}
-                <motion.div
-                    className="absolute inset-0 bg-accent-blue/10 mix-blend-overlay"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: isHovered ? 1 : 0 }}
-                    transition={{ duration: 0.3 }}
-                />
+                {/* Background Gradient/Image Placeholder */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-0" />
             </motion.div>
         </Link>
     );
