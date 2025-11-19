@@ -68,7 +68,7 @@ export const projects: Project[] = [
         title: "TruBridge Data",
         category: "Data Analysis",
         year: "2023",
-        description: "Analyzed a 402k+ entry dataset to reveal 9.3% uninsured rates using Python pipelines. Visualized complex healthcare data trends to drive business insights.",
+        description: "Worked with Extern, an external consultancy, which assigned me a project to analyze TruBridge data, revealing uninsured rates and visualizing healthcare trends.",
         tech: ["Python", "Pandas", "Matplotlib", "SQL"],
         visualMetaphor: "Particle Data Cloud",
         architecture: ["Raw CSV Ingest", "Pandas Cleaning", "SQL Aggregation", "Matplotlib Render"],
