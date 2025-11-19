@@ -23,7 +23,7 @@ export default function ContactSection() {
                             <MagneticButton strength={0.2}>
                                 <a
                                     href="mailto:adilzaben@gmail.com"
-                                    className="text-4xl md:text-6xl font-bold text-white hover:text-gray-300 transition-colors inline-flex items-center gap-4"
+                                    className="text-2xl sm:text-4xl md:text-6xl font-bold text-white hover:text-gray-300 transition-colors inline-flex items-center gap-4 break-all md:break-normal"
                                 >
                                     adilzaben@gmail.com
                                 </a>

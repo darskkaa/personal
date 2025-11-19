@@ -82,7 +82,7 @@ export default function ChatInterface() {
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        className="fixed bottom-24 right-4 md:right-8 w-[90vw] md:w-[400px] h-[500px] bg-[#1a1b26]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden"
+                        className="fixed bottom-24 right-4 md:right-8 w-[90vw] md:w-[400px] h-[500px] max-h-[70vh] md:max-h-[80vh] bg-[#1a1b26]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden"
                     >
                         {/* Header */}
                         <div className="p-4 border-b border-white/10 bg-white/5 flex items-center gap-3">
@@ -113,8 +113,8 @@ export default function ChatInterface() {
                                     </div>
                                     <div
                                         className={`p-3 rounded-2xl text-sm max-w-[80%] ${msg.role === "user"
-                                                ? "bg-accent-blue text-white rounded-tr-none"
-                                                : "bg-white/5 text-gray-200 rounded-tl-none border border-white/5"
+                                            ? "bg-accent-blue text-white rounded-tr-none"
+                                            : "bg-white/5 text-gray-200 rounded-tl-none border border-white/5"
                                             }`}
                                     >
                                         {msg.text}

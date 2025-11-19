@@ -174,7 +174,7 @@ const TerminalModule = ({ logs }: { logs?: string[] }) => {
 export default function ProjectBento({ project }: { project: Project }) {
     return (
         <div className="w-full max-w-7xl mx-auto p-4 md:p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-auto md:grid-rows-[300px_200px] gap-4 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-auto md:grid-rows-[300px_200px] gap-4 md:gap-6">
                 {/* Top Left: Narrative */}
                 <NarrativeModule project={project} />
 
