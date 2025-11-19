@@ -144,7 +144,7 @@ export default function ChatInterface() {
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     placeholder="Ask about Adil's projects..."
-                                    className="w-full bg-black/20 border border-white/10 rounded-full py-3 pl-4 pr-12 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-accent-blue transition-colors"
+                                    className="w-full bg-black/20 border border-white/10 rounded-full py-3 pl-4 pr-12 text-base md:text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-accent-blue transition-colors"
                                 />
                                 <button
                                     type="submit"
