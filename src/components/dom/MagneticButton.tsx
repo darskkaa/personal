@@ -16,6 +16,9 @@ export default function MagneticButton({
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
     const handleMouseMove = (e: React.MouseEvent) => {
+        // Disable on touch devices
+        if (window.matchMedia && !window.matchMedia("(pointer: fine)").matches) return;
+
         const { clientX, clientY } = e;
         const { left, top, width, height } = ref.current!.getBoundingClientRect();
 

@@ -6,8 +6,15 @@ import { motion } from "framer-motion";
 export default function CustomCursor() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        // Only enable on devices with a fine pointer (mouse)
+        const mediaQuery = window.matchMedia("(pointer: fine)");
+        if (!mediaQuery.matches) return;
+
+        setIsVisible(true);
+
         const updateMousePosition = (e: MouseEvent) => {
             setMousePosition({ x: e.clientX, y: e.clientY });
         };
@@ -29,9 +36,11 @@ export default function CustomCursor() {
         };
     }, []);
 
+    if (!isVisible) return null;
+
     return (
         <motion.div
-            className="fixed top-0 left-0 w-8 h-8 bg-white rounded-full pointer-events-none z-50 mix-blend-difference"
+            className="fixed top-0 left-0 w-8 h-8 bg-white rounded-full pointer-events-none z-50 mix-blend-difference hidden md:block"
             animate={{
                 x: mousePosition.x - 16,
                 y: mousePosition.y - 16,
