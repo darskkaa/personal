@@ -29,7 +29,7 @@ export default function About() {
                     <div className="space-y-8 text-gray-300 text-lg font-light">
                         <p>
                             My approach bridges the gap between systems engineering and creative expression.
-                            At TruBridge, I didn't just analyze data; I architected pipelines to process
+                            At TruBridge (Extern), I didn't just analyze data; I architected pipelines to process
                             <span className="text-accent-blue font-bold"> 402,308 </span> records, revealing critical insights.
                         </p>
 
